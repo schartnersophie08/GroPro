@@ -27,7 +27,12 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        String filename = "gro-pro-main/testfälle/Test";
+        if (args.length < 1) {
+            System.err.println("[ERR] Kein Dateiname übergeben. Verwendung: java -jar gro-pro-main.jar <pfad-zur-eingabedatei>");
+            System.exit(1);
+        }
+
+        String filename = args[0];
 
         try {
             Execution execution = new Execution(
@@ -36,7 +41,7 @@ public class Main {
                 new AlgorithmusImpl(),
                 filename,
                 new ErrorWriter(),
-                    new GnuplotWriter()
+                new GnuplotWriter()
             );
             execution.execute();
         } catch (RuntimeException e) {

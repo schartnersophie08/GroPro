@@ -32,10 +32,11 @@ public class GnuplotWriter {
     public void write(PlotData plotData, String fileName) {
         String pureName = Path.of(fileName).getFileName().toString();
         String scriptPath = OUTPUT_DIR + pureName + ".gp";
+        String pngPfad   = OUTPUT_DIR + pureName + ".png";
 
         try {
             Files.createDirectories(Path.of(OUTPUT_DIR));
-            Files.writeString(Path.of(scriptPath), plotData.toGnuplotString());
+            Files.writeString(Path.of(scriptPath), plotData.toGnuplotString(pngPfad));
 
             // GNUPlot ausführen
             ProcessBuilder pb = new ProcessBuilder("gnuplot", "--persist", scriptPath);

@@ -45,16 +45,16 @@ public class Execution<I extends InputData, O extends OutputData> {
      * @param inputReader    Reader zum Einlesen der Eingabedatei
      * @param outputWriter   Writer für die Textausgabe
      * @param algorithmus    Algorithmus-Implementierung
-     * @param filePath       Pfad zur Eingabedatei
+     * @param filename       Pfad zur Eingabedatei
      * @param errorWriter    Writer für Fehlermeldungen
      * @param gnuplotWriter  Writer für GNUPlot-Skripte und PNG-Erzeugung
      */
-    public Execution(InputReader<I> inputReader, OutputWriter outputWriter, Algorithmus<I, O> algorithmus, String filePath,
+    public Execution(InputReader<I> inputReader, OutputWriter outputWriter, Algorithmus<I, O> algorithmus, String filename,
             ErrorWriter errorWriter, GnuplotWriter gnuplotWriter) {
         this.inputReader = inputReader;
         this.outputWriter = outputWriter;
         this.algorithmus = algorithmus;
-        this.filename = filePath;
+        this.filename = filename;
         this.errorWriter = errorWriter;
         this.gnuplotWriter = gnuplotWriter;
     }

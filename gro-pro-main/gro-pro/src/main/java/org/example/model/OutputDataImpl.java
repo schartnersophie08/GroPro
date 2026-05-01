@@ -44,18 +44,6 @@ public class OutputDataImpl implements OutputData {
     }
 
     /**
-     * Gibt ein GNUPlot-Skript zurück (in dieser Dummy-Implementierung leer,
-     * da die Plotlogik über {@link PlotData} gesteuert wird).
-     *
-     * @param pngPfad Zielpfad für die PNG-Ausgabe
-     * @return leerer String
-     */
-    @Override
-    public String toGnuplotScript(String pngPfad) {
-        return "";
-    }
-
-    /**
      * Gibt den Dateinamen der Ausgabedatei zurück.
      *
      * @return Dateiname ohne Verzeichnispfad

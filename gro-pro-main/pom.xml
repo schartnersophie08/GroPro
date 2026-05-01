@@ -40,6 +40,8 @@
         <artifactId>maven-jar-plugin</artifactId>
         <version>3.4.2</version>
         <configuration>
+          <outputDirectory>${project.basedir}</outputDirectory>
+          <finalName>gro-pro-main</finalName>
           <archive>
             <manifest>
               <mainClass>org.example.Main</mainClass>

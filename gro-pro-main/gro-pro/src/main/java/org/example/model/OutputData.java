@@ -18,14 +18,6 @@ public interface OutputData {
     String toOutputString();
 
     /**
-     * Erzeugt ein GNUPlot-Skript zur grafischen Darstellung des Ergebnisses.
-     *
-     * @param pngPfad Ziel-Pfad der zu erzeugenden PNG-Datei
-     * @return GNUPlot-Skript als String
-     */
-    String toGnuplotScript(String pngPfad);
-
-    /**
      * Gibt den Dateinamen der Ausgabedatei zurück (ohne Verzeichnispfad).
      *
      * @return Dateiname der Ausgabe

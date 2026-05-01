@@ -13,7 +13,8 @@ public interface PlotData {
     /**
      * Gibt das vollständige GNUPlot-Skript als String zurück.
      *
+     * @param pngPfad Zielpfad für die zu erzeugende PNG-Datei
      * @return GNUPlot-Skriptinhalt inklusive terminal-, output- und plot-Befehlen
      */
-    String toGnuplotString();
+    String toGnuplotString(String pngPfad);
 }

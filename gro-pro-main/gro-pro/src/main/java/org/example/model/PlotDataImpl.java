@@ -13,21 +13,20 @@ public class PlotDataImpl implements PlotData {
     /**
      * Gibt ein GNUPlot-Skript zurück, das eine Sinuskurve als PNG rendert.
      * <p>
-     * Das erzeugte PNG wird unter {@code gro-pro-main/output/testplot.png} gespeichert.
+     * Das erzeugte PNG wird unter dem übergebenen {@code pngPfad} gespeichert.
      * </p>
      *
+     * @param pngPfad Zielpfad für die PNG-Ausgabe
      * @return vollständiges GNUPlot-Skript als String
      */
     @Override
-    public String toGnuplotString() {
-        return """
-            set terminal png size 800,600
-            set output "gro-pro-main/output/testplot.png"
-            set title "Test-Plot"
-            set xlabel "x"
-            set ylabel "y"
-            set grid
-            plot sin(x) title "sin(x)" with lines
-            """;
+    public String toGnuplotString(String pngPfad) {
+        return "set terminal png size 800,600\n"
+             + "set output \"" + pngPfad + "\"\n"
+             + "set title \"Test-Plot\"\n"
+             + "set xlabel \"x\"\n"
+             + "set ylabel \"y\"\n"
+             + "set grid\n"
+             + "plot sin(x) title \"sin(x)\" with lines\n";
     }
 }
