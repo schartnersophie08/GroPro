@@ -13,7 +13,7 @@ $TESTDIR    = "$PROJEKTDIR\testf" + [char]0x00E4 + "lle"
 # --- JAR pruefen ---
 if (-not (Test-Path $JAR)) {
     Write-Host "[FEHLER] gro-pro-main.jar nicht gefunden." -ForegroundColor Red
-    Write-Host "         Bitte zuerst das Projekt bauen: mvn package" -ForegroundColor Yellow
+    Write-Host "         Bitte zuerst das Projekt bauen: .\build.ps1" -ForegroundColor Yellow
     exit 1
 }
 

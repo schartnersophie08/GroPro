@@ -1,24 +1,12 @@
-package org.example.io.ausgabe;
+package org.example.io.output;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 
-/**
- * Schreibt Fehlermeldungen in dedizierte Fehlerdateien im Ausgabeverzeichnis.
- * Ermöglicht eine strukturierte Fehlerbehandlung und -dokumentation.
- */
 public class ErrorWriter {
 
-    /**
-     * Erstellt eine Fehlerdatei im output-Verzeichnis in welche die übergebene Fehlermeldung geschrieben wird.
-     * Der Dateiname wird automatisch aus dem Eingabedateinamen generiert mit dem Prefix "FEHLER_".
-     * Dies ermöglicht eine klare Zuordnung von Fehlern zu den verursachenden Eingabedateien.
-     *
-     * @param filename Name der Eingabedatei ohne Pfad-Prefix
-     * @param message  Fehlermeldung, die in die Fehlerdatei geschrieben werden soll
-     */
     public void writeError(String filename, String message) {
         try {
             // Erstelle output-Ordner falls nicht vorhanden

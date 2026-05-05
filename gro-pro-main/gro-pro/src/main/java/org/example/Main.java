@@ -1,30 +1,17 @@
 package org.example;
 
-import org.example.algorithmus.AlgorithmusImpl;
-import org.example.io.ausgabe.ErrorWriter;
-import org.example.io.ausgabe.FileOutputWriter;
-import org.example.io.ausgabe.GnuplotWriter;
-import org.example.io.eingabe.InputReaderImpl;
+import org.example.algorithmus.BeidseitigesWarten;
+import org.example.algorithmus.EinfacheFahrt;
+import org.example.algorithmus.EinseitigesWarten;
+import org.example.io.output.ErrorWriter;
+import org.example.io.output.FileOutputWriter;
+import org.example.io.input.InputReaderImpl;
 import org.example.execution.Execution;
 
-/**
- * Einstiegspunkt der Anwendung.
- * <p>
- * Erstellt alle benötigten Komponenten (Reader, Writer, Algorithmus)
- * und startet die {@link Execution}, die den gesamten Verarbeitungsablauf steuert.
- * </p>
- */
+import java.util.List;
+
 public class Main {
 
-    /**
-     * Hauptmethode – startet die Anwendung.
-     * <p>
-     * Im Fehlerfall wird eine Fehlermeldung auf {@code System.err} ausgegeben
-     * und die Anwendung mit Exit-Code 1 beendet.
-     * </p>
-     *
-     * @param args Kommandozeilenargumente (werden aktuell nicht verwendet)
-     */
     public static void main(String[] args) {
 
         if (args.length < 1) {
@@ -38,10 +25,9 @@ public class Main {
             Execution execution = new Execution(
                 new InputReaderImpl(),
                 new FileOutputWriter(),
-                new AlgorithmusImpl(),
+                List.of(new EinfacheFahrt(),new EinseitigesWarten(),new BeidseitigesWarten()),
                 filename,
-                new ErrorWriter(),
-                new GnuplotWriter()
+                new ErrorWriter()
             );
             execution.execute();
         } catch (RuntimeException e) {
