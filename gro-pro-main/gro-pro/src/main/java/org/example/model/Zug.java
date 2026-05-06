@@ -2,6 +2,7 @@ package org.example.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.example.Konstanten;
 
 public class Zug {
     List<Intervall> intervalle;
@@ -25,7 +26,7 @@ public class Zug {
         for (int abstand : abstaende) {
             Zeit end = start.add(abstand);
             this.intervalle.add(new Intervall(start, end));
-            start = end.add(1); // Sicherheitswartezeit von 1 Minute pro Zwischenstation
+            start = end.add(Konstanten.HALTEZEIT);
         }
     }
 }

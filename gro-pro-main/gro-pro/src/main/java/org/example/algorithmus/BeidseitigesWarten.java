@@ -6,16 +6,15 @@ import org.example.model.Zug;
 import org.example.model.ZugInput;
 import org.example.model.ZugOutput;
 
+import org.example.Konstanten;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class BeidseitigesWarten implements Algorithmus {
 
-    /** Feste Haltezeit an Bahnhöfen (Ein- und Aussteigen) */
-    private static final int HALTEZEIT = 1;
-
-    /** Sicherheitswartezeit nach einer Begegnung */
-    private static final int SICHERHEITSZEIT = 1;
+    private static final int HALTEZEIT       = Konstanten.HALTEZEIT;
+    private static final int SICHERHEITSZEIT = Konstanten.SICHERHEITSZEIT;
 
     @Override
     public ZugOutput loese(ZugInput inputData) {

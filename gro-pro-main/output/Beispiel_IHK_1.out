@@ -11,38 +11,38 @@ Anzahl Bahnhöfe : 3
 Mindestdauer      : 13
 
 Einfache Fahrt:
-An          22     30     
+An          22     31     
 Wa                          
-Ab  17     23             
+Ab  17     24             
       A       B       C 
-Ab          39     31     
+Ab          42     33     
 Wa                          
-An  44     38             
-Gesamtdauer Hinfahrt, Rückfahrt       : 13, 13
+An  47     40             
+Gesamtdauer Hinfahrt, Rückfahrt       : 14, 14
 Summe Wartezeiten Hinfahrt, Rückfahrt : 0, 0
 Summe Strafen                         : 0
 
 Einseitiges Warten:
-An          22     30     
+An          22     31     
 Wa                          
-Ab  17     23             
+Ab  17     24             
       A       B       C 
-Ab          39     31     
+Ab          45     36     
 Wa                          
-An  44     38             
-Gesamtdauer Hinfahrt, Rückfahrt       : 13, 13
+An  50     43             
+Gesamtdauer Hinfahrt, Rückfahrt       : 14, 14
 Summe Wartezeiten Hinfahrt, Rückfahrt : 0, 0
 Summe Strafen                         : 0
 
 Beidseitiges Warten:
-An          22     30     
+An          22     31     
 Wa                          
-Ab  17     23             
+Ab  17     24             
       A       B       C 
-Ab          39     31     
+Ab          45     36     
 Wa                          
-An  44     38             
-Gesamtdauer Hinfahrt, Rückfahrt       : 13, 13
+An  50     43             
+Gesamtdauer Hinfahrt, Rückfahrt       : 14, 14
 Summe Wartezeiten Hinfahrt, Rückfahrt : 0, 0
 Summe Strafen                         : 0
 

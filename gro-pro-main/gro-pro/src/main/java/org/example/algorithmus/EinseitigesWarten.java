@@ -1,5 +1,6 @@
 package org.example.algorithmus;
 
+import org.example.Konstanten;
 import org.example.model.Intervall;
 import org.example.model.Zeit;
 import org.example.model.Zug;
@@ -10,6 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EinseitigesWarten implements Algorithmus {
+
+    private static final int HALTEZEIT       = Konstanten.HALTEZEIT;
+    private static final int SICHERHEITSZEIT = Konstanten.SICHERHEITSZEIT;
 
     @Override
     public ZugOutput loese(ZugInput inputData) {
@@ -34,7 +38,7 @@ public class EinseitigesWarten implements Algorithmus {
         // Rückfahrt Segment für Segment aufbauen
         // Rückfahrt-Segment j (j=0..n-1) entspricht physischem Segment (n-1-j)
         List<Intervall> hinIntervalle = zug1.getIntervalle();
-        int aktuelleStart = hinIntervalle.get(n - 1).getEnde().toMinuten() + 1;
+        int aktuelleStart = hinIntervalle.get(n - 1).getEnde().toMinuten() + SICHERHEITSZEIT;
 
         for (int j = 0; j < n; j++) {
             int physSegment = n - 1 - j;
@@ -50,15 +54,15 @@ public class EinseitigesWarten implements Algorithmus {
                 for (Zug anderer : andereZuege) {
                     Intervall gegner = anderer.getIntervalle().get(physSegment);
                     if (versuch.kollidiert(gegner)) {
-                        // Warte bis Ende des Gegenzug-Intervalls + 1
-                        aktuelleStart = gegner.getEnde().toMinuten() + 1;
+                        // Warte bis Ende des Gegenzug-Intervalls + SICHERHEITSZEIT
+                        aktuelleStart = gegner.getEnde().toMinuten() + SICHERHEITSZEIT;
                         kollision = true;
                         break;
                     }
                 }
                 if (!kollision) {
                     zug1.addIntervall(versuch);
-                    aktuelleStart = aktuelleStart + dauer + 1;
+                    aktuelleStart = aktuelleStart + dauer + HALTEZEIT;
                 }
             } while (kollision);
         }
@@ -75,16 +79,15 @@ public class EinseitigesWarten implements Algorithmus {
         // Score = sumWarteHin² + sumWarteRueck²
         // Hinfahrt hat keine Wartezeiten, Rückfahrt: Differenz zwischen tatsächlichem und minimalem Start
         List<Intervall> alleIv = zug1.getIntervalle();
-        int minRueckStart = alleIv.get(n - 1).getEnde().toMinuten() + 1;
+        int minRueckStart = alleIv.get(n - 1).getEnde().toMinuten() + SICHERHEITSZEIT;
         int istRueckStart = alleIv.get(n).getStart().toMinuten();
         int sumWaRueck = istRueckStart - minRueckStart;
         // Zusätzliche Wartezeiten an Zwischenstationen der Rückfahrt
         for (int j = 1; j < n; j++) {
             int ankunft = alleIv.get(n + j - 1).getEnde().toMinuten();
             int abfahrt = alleIv.get(n + j).getStart().toMinuten();
-            sumWaRueck += Math.max(0, abfahrt - ankunft - 1);
+            sumWaRueck += Math.max(0, abfahrt - ankunft - HALTEZEIT);
         }
-        double score = (double) sumWaRueck * sumWaRueck;
 
         return ZugOutput.vonZug("Einseitiges Warten", inputData, zug1, kollisionspunkte);
     }

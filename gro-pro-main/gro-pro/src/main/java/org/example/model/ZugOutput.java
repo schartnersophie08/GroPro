@@ -1,5 +1,6 @@
 package org.example.model;
 
+import org.example.Konstanten;
 import java.util.List;
 import java.util.Objects;
 
@@ -84,7 +85,7 @@ public class ZugOutput {
         int[] wa = new int[ankunft.length];
         for (int i = 0; i < ankunft.length; i++) {
             if (ankunft[i] != 0 && abfahrt[i] != 0) {
-                wa[i] = Math.max(0, abfahrt[i] - ankunft[i] - 1);
+                wa[i] = Math.max(0, abfahrt[i] - ankunft[i] - Konstanten.HALTEZEIT);
             }
             // sonst 0 → keine Ausgabe
         }

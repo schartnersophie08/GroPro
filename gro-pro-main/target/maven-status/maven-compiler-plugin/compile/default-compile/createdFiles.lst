@@ -16,3 +16,4 @@ org\example\io\output\FileOutputWriter.class
 org\example\io\output\OutputWriter.class
 org\example\model\ZugInput.class
 org\example\algorithmus\EinfacheFahrt.class
+org\example\Konstanten.class
