@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.List;
+import org.example.Konstanten;
 import org.example.model.ZugInput;
 
 public class InputReaderImpl implements InputReader {
@@ -12,7 +13,7 @@ public class InputReaderImpl implements InputReader {
     private static final String HEADER_STRECKE   = "Strecke:";
     private static final String HEADER_ABSTAENDE = "Abstaende:";
     private static final String HEADER_START     = "Start Hinfahrt:";
-    private static final int    MAX_TEILSTRECKE  = 30;
+    private static final int    MAX_TEILSTRECKE  = (30-Integer.max(Konstanten.HALTEZEIT, Konstanten.SICHERHEITSZEIT));
 
     @Override
     public ZugInput readInput(String filename) throws IOException {

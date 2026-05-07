@@ -69,17 +69,38 @@ public class ZugOutput {
 
     private String buildRow(String label, int[] zeiten) {
         StringBuilder sb = new StringBuilder();
-        sb.append(label).append("  ");
+        sb.append(label).append("    ");
         for (int z : zeiten) {
             if (z == 0) {
-                sb.append("        ");
+                sb.append("      ");
             } else {
-                sb.append(fmtZeit(z)).append("     ");
+                sb.append(fmtZeit(z)).append("    ");
             }
         }
         sb.append("\n");
         return sb.toString();
     }
+
+    private String buildRowWa(int[] zeiten) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Wa   ");
+        for (int z : zeiten) {
+            if (z == 0) {
+                sb.append("      ");
+            } else {
+                sb.append("(");
+                if (z < 10){
+                    sb.append(fmtZeit(z));
+                } else{
+                    sb.append(z);
+                }
+                sb.append(")").append("  ");
+            }
+        }
+        sb.append("\n");
+        return sb.toString();
+    }
+
 
     private int[] berechneExtraWartezeiten(int[] ankunft, int[] abfahrt) {
         int[] wa = new int[ankunft.length];
@@ -107,15 +128,15 @@ public class ZugOutput {
         int[] waRueck = berechneExtraWartezeiten(ankunftRueck, abfahrtRueck);
         int score = summe(waHin) * summe(waHin) + summe(waRueck) * summe(waRueck);
         sb.append(buildRow("An", ankunftHin));
-        sb.append(buildRow("Wa", waHin));
+        sb.append(buildRowWa(waHin));
         sb.append(buildRow("Ab", abfahrtHin));
 
         sb.append("      ");
         for (String s : kollisionspunkte) {
             if (Objects.equals(s, "X")) {
-                sb.append(" X   ");
+                sb.append(" X  ");
             } else if (Objects.equals(s, "")) {
-                sb.append("      ");
+                sb.append("    ");
             } else {
                 sb.append(s).append(" ");
             }
@@ -123,7 +144,7 @@ public class ZugOutput {
         sb.append("\n");
 
         sb.append(buildRow("Ab", abfahrtRueck));
-        sb.append(buildRow("Wa", waRueck));
+        sb.append(buildRowWa(waRueck));
         sb.append(buildRow("An", ankunftRueck));
 
         // --- Statistik ---
@@ -131,7 +152,7 @@ public class ZugOutput {
         int dauerRueck = ankunftRueck[0] - abfahrtRueck[abfahrtRueck.length - 1];
         int sumWaHin   = summe(waHin);
         int sumWaRueck = summe(waRueck);
-
+        sb.append("\n");
         sb.append("Gesamtdauer Hinfahrt, Rückfahrt       : ")
           .append(dauerHin).append(", ").append(dauerRueck).append("\n");
         sb.append("Summe Wartezeiten Hinfahrt, Rückfahrt : ")

@@ -53,6 +53,6 @@ public class ZugInput {
              + "Abstaende:\n" + abstaendeStr + "\n\n"
              + "Start Hinfahrt:\n" + start + "\n\n"
              + "Anzahl Bahnhöfe : " + getAnzahlStationen() + "\n"
-             + "Mindestdauer      : " + getMindestdauer() + "\n";
+             + "Mindestdauer    : " + getMindestdauer() + "\n";
     }
 }
